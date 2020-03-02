@@ -38,6 +38,9 @@ debian_default_toolchain_task:
     - allow_failures: false
       container:
         image: collectd/ci:trusty_amd64
+      env:
+        # trusty contains unsupported varsion (4) of varnish
+        DEFAULT_CONFIG_OPTS: --enable-debug --without-libstatgrab --disable-dependency-tracking --disable-varnish
     - allow_failures: false
       container:
         image: collectd/ci:xenial_amd64
@@ -59,6 +62,7 @@ debian_default_toolchain_task:
     - make -j2 -sk
   tests_script:
     - make -j2 -sk check
+    - echo "SUPPORTED_PLUGIN_LIST=$SUPPORTED_PLUGIN_LIST"
     - /checks/check-built-plugins.sh
 
 ###
