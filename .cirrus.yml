@@ -17,7 +17,8 @@ release_ready_task:
     - ./build.sh
     - ./configure $DEFAULT_CONFIG_OPTS
   checks_script:
-    - make -j2 -s distcheck DISTCHECK_CONFIGURE_FLAGS="${DEFAULT_CONFIG_OPTS}"
+    - make -j2 -s distcheck DISTCHECK_CONFIGURE_FLAGS="${DEFAULT_CONFIG_OPTS}" || true
+    - ls -l *.log && cat *.log
 
 ###
 # Default toolchain and build flags used in deb packages, on a range of Debian
@@ -58,7 +59,8 @@ debian_default_toolchain_task:
   build_script:
     - make -j2 -sk
   tests_script:
-    - make -j2 -sk check
+    - make -j2 -sk check || true
+    - ls -l *.log && cat *.log
     - /checks/check-built-plugins.sh
 
 ###
@@ -93,7 +95,7 @@ redhat_default_toolchain_task:
   build_script:
     - make -j2 -sk
   tests_script:
-    - make -j2 -sk check
+    - make -j2 -sk check || true
     - ls -l *.log && cat *.log
     - /checks/check-built-plugins.sh
 
