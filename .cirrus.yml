@@ -38,9 +38,9 @@ debian_default_toolchain_task:
     - allow_failures: false
       container:
         image: collectd/ci:trusty_amd64
-        env:
-          # trusty contains unsupported varsion (4) of varnish
-          DEFAULT_CONFIG_OPTS: $DEFAULT_CONFIG_OPTS --disable-varnish
+      env:
+        # trusty contains unsupported varsion (4) of varnish
+        DEFAULT_CONFIG_OPTS: $DEFAULT_CONFIG_OPTS --disable-varnish
     - allow_failures: false
       container:
         image: collectd/ci:xenial_amd64
