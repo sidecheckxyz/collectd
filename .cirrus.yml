@@ -94,6 +94,7 @@ redhat_default_toolchain_task:
     - make -j2 -sk
   tests_script:
     - make -j2 -sk check
+    - ls -l *.log && cat *.log
     - /checks/check-built-plugins.sh
 
 
