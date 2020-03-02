@@ -150,12 +150,12 @@ DEF_TEST(get_max_len) {
   return 0;
 }
 
-DEF_TEST(init) {
-  int ret = md_events_init();
-  EXPECT_EQ_INT(ret, 0);
+// DEF_TEST(init) {
+//   int ret = md_events_init();
+//   EXPECT_EQ_INT(ret, 0);
 
-  return 0;
-}
+//   return 0;
+// }
 
 DEF_TEST(match_regex) {
   regex_t r;
