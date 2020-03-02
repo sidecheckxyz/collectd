@@ -4,6 +4,20 @@ env:
   DEFAULT_CONFIG_OPTS: --enable-debug --without-libstatgrab --disable-dependency-tracking
 
 
+
+syslog_task:
+  container:
+    image: collectd/ci:stretch_amd64
+  check_script:
+    - ls -l /var/log/syslog
+    
+messages_task:
+  container:
+    image: collectd/ci:stretch_amd64
+  check_script:
+    - ls -l /var/log/messages
+
+
 ###
 # make distcheck and other sanity checks
 #
